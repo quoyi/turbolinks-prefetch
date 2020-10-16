@@ -7,8 +7,17 @@ export default class {
       return
     }
 
-
     const prefetcher = new Prefetcher(window.Turbolinks.controller)
     prefetcher.start(delay)
+  }
+
+  static prefetch(url) {
+    if (!window.Turbolinks) {
+      console.error('window.Turbolinks not found, you must import Turbolinks with global.')
+      return
+    }
+
+    const prefetcher = new Prefetcher(window.Turbolinks.controller)
+    prefetcher.prefetch(url)
   }
 }
